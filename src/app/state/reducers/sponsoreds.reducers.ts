@@ -7,5 +7,5 @@ export const initialState: ReadonlyArray<SponsoredModel> = [];
 
 export const sponsoredsReducer = createReducer(
   initialState,
-  on(SponsoredApiActions.retrievedSponsoredsList, (_state, { sponsoreds }) => sponsoreds)
+  on(SponsoredApiActions, (_state, { sponsoreds }) => sponsoreds)
 );

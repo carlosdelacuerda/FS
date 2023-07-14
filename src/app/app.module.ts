@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { sponsoredsReducer } from 'src/app/state/reducers/sponsoreds.reducers';
 import { StoreModule } from '@ngrx/store';
 import { HeaderModule } from './modules/shared/header/header.module';
+import { EffectsModule } from '@ngrx/effects';
+import { SponoredsEffects } from './state/effects/sponsoreds.effects';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { HeaderModule } from './modules/shared/header/header.module';
     AppRoutingModule,
     StoreModule.forRoot({ sponsoreds: sponsoredsReducer }),
     HttpClientModule,
-    HeaderModule
+    HeaderModule,
+    EffectsModule.forRoot(SponoredsEffects),
   ],
   providers: [],
   bootstrap: [AppComponent]

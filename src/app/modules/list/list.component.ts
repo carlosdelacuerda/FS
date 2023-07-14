@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { selectSponsoreds } from 'src/app/state/selectors/sponsoreds.selectors';
-import { SponsoredsService } from 'src/app/services/sponsoreds.service';
-import { SponsoredApiActions } from 'src/app/state/actions/sponsoreds.actions';
+import { Observable } from 'rxjs';
+import { SponsoredModel } from 'src/app/models/sponsored';
 
 @Component({
   selector: 'app-list',
@@ -12,16 +11,12 @@ import { SponsoredApiActions } from 'src/app/state/actions/sponsoreds.actions';
 })
 export class ListComponent implements OnInit {
 
-  sponsoreds$ = this.store.select(selectSponsoreds);
+  sponsoreds$: Observable<SponsoredModel[]> = this.store.select(state => state.sponsoreds);
  
-  constructor(private sponsoredsService: SponsoredsService, private store: Store) {}
+  constructor( private store: Store<{ sponsoreds: SponsoredModel[] }>) {}
  
   ngOnInit() {
-    this.sponsoredsService
-      .getSponsoreds()
-      .subscribe((sponsoreds) =>
-        this.store.dispatch(SponsoredApiActions.retrievedSponsoredsList({ sponsoreds }))
-      );
+    this.store.dispatch({ type: '[Sponsoreds Page] Load Sponsoreds' });
   }
 
 }
