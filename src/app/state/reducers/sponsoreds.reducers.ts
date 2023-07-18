@@ -1,11 +1,22 @@
 import { createReducer, on } from '@ngrx/store';
+import { sponsoredsState } from 'src/app/models/sponsoreds.model';
+import { loadSponsoreds, loadedSponsoreds } from '../actions/sponsoreds.actions';
 
-import { SponsoredApiActions } from '../actions/sponsoreds.actions';
-import { SponsoredModel } from 'src/app/models/sponsored';
-
-export const initialState: ReadonlyArray<SponsoredModel> = [];
+export const initialState: sponsoredsState = {
+  loading: false,
+  sponsoredsList: []
+}
 
 export const sponsoredsReducer = createReducer(
   initialState,
-  on(SponsoredApiActions.retrievedSponsoredsList, (_state, { sponsoreds }) => sponsoreds)
-);
+
+  on(loadSponsoreds, (state) => {
+    return { ...state, loading: true }
+  }
+  ),
+
+  on(loadedSponsoreds, (state, {sponsoreds}) => {
+    return { ...state,  sponsoredsList: sponsoreds, loading: false }
+  }
+  )
+)
