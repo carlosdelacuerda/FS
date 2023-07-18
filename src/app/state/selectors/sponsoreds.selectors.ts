@@ -1,19 +1,14 @@
-import { createSelector } from '@ngrx/store';
-import { SponsoredModel } from 'src/app/models/sponsored';
-export interface FeatureState {
-  sponsoreds: SponsoredModel[];
-}
+import { createSelector } from "@ngrx/store";
+import { AppState } from "../app.state";
+import { sponsoredsState } from "src/app/models/sponsoreds.model";
 
-export interface AppState {
-  feature: FeatureState;
-}
+export const selectSponsoredsFeature = (state: AppState) => state.sponsoreds
 
-export const selectFeature = (state: AppState) => state.feature;
-
-export const selectFeatureSponsoreds = createSelector(
-  selectFeature,
-  (state: FeatureState) => state.sponsoreds
-);
-
-
-
+export const selectLoadingSponsoreds = createSelector(
+    selectSponsoredsFeature,
+    (state: sponsoredsState) => state.loading
+)
+export const selectListSponsoreds = createSelector(
+    selectSponsoredsFeature,
+    (state: sponsoredsState) => state.sponsoredsList
+)

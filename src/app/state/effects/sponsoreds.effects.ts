@@ -1,24 +1,25 @@
-import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY } from 'rxjs';
-import { map, exhaustMap, catchError } from 'rxjs/operators';
-import { SponsoredsService } from 'src/app/services/sponsoreds.service';
+import { Injectable } from "@angular/core";
+import { createEffect, Actions, ofType } from "@ngrx/effects";
+import { EMPTY } from "rxjs";
+import { map, mergeMap, catchError } from "rxjs";
+import { SponsoredsService } from "src/app/services/sponsoreds.service";
 
 @Injectable()
-export class SponoredsEffects {
+export class SponsoredsEffects {
 
-  loadSponsoreds$ = createEffect(() => this.actions$.pipe(
-    ofType('[Sponsoreds Page] Load Sponsoreds'),
-    exhaustMap(() => this.sponsoredsService.getSponsoreds()
-      .pipe(
-        map(sponsoreds => ({ type: '[Sponsoreds API] Sponsoreds Load Success', payload: sponsoreds })),
-        catchError(() => EMPTY)
-      ))
+    constructor(
+        private actions$: Actions,
+        private sponsoredsService: SponsoredsService
+    ){}
+
+    loadSponsoreds$ = createEffect(() => this.actions$.pipe(
+        ofType('[Sponsoreds API] Load Sponsoreds'),
+        mergeMap(() => this.sponsoredsService.getSponsoreds()
+            .pipe(
+                map(sponsoreds => ({type: '[Sponsoreds API] Sponsoreds Load Success', sponsoreds })),
+                catchError(() => EMPTY)
+            ))
+        )
     )
-  );
 
-  constructor(
-    private actions$: Actions,
-    private sponsoredsService: SponsoredsService
-  ) {}
 }

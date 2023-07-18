@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-
+import { sponsoredsModel } from 'src/app/models/sponsoreds.model';
 import { Observable } from 'rxjs';
-import { SponsoredModel } from 'src/app/models/sponsored';
+import { loadSponsoreds } from 'src/app/state/actions/sponsoreds.actions';
+import { AppState } from 'src/app/state/app.state';
+import { selectListSponsoreds } from 'src/app/state/selectors/sponsoreds.selectors';
 
 @Component({
   selector: 'app-list',
@@ -11,12 +13,16 @@ import { SponsoredModel } from 'src/app/models/sponsored';
 })
 export class ListComponent implements OnInit {
 
-  sponsoreds$: Observable<SponsoredModel[]> = this.store.select(state => state.sponsoreds);
- 
-  constructor( private store: Store<{ sponsoreds: SponsoredModel[] }>) {}
+  sponsoreds$: Observable<ReadonlyArray<sponsoredsModel>> = new Observable
+  loading$: Observable<boolean> = new Observable;
+
+  constructor(
+    private store: Store<AppState>,
+    ) {}
  
   ngOnInit() {
-    this.store.dispatch({ type: '[Sponsoreds Page] Load Sponsoreds' });
+    this.store.dispatch( loadSponsoreds() )
+    this.sponsoreds$ = this.store.select(selectListSponsoreds)
   }
 
 }

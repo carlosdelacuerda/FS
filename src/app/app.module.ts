@@ -8,8 +8,8 @@ import { sponsoredsReducer } from 'src/app/state/reducers/sponsoreds.reducers';
 import { StoreModule } from '@ngrx/store';
 import { HeaderModule } from './modules/shared/header/header.module';
 import { EffectsModule } from '@ngrx/effects';
-import { SponoredsEffects } from './state/effects/sponsoreds.effects';
-
+import { ROOT_REDUCERS } from './state/app.state';
+import { SponsoredsEffects } from './state/effects/sponsoreds.effects';
 @NgModule({
   declarations: [
     AppComponent
@@ -17,10 +17,10 @@ import { SponoredsEffects } from './state/effects/sponsoreds.effects';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ sponsoreds: sponsoredsReducer }),
+    StoreModule.forRoot( ROOT_REDUCERS ),
     HttpClientModule,
     HeaderModule,
-    EffectsModule.forRoot(SponoredsEffects),
+    EffectsModule.forRoot( [SponsoredsEffects] ),
   ],
   providers: [],
   bootstrap: [AppComponent]
