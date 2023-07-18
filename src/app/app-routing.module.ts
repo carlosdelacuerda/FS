@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/list',
+    pathMatch: 'full' 
+  },
+  {
     path: 'list',
     loadChildren: () => import('./modules/list/list.module').then(m => m.ListModule)
   },
