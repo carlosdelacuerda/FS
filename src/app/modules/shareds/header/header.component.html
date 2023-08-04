@@ -1,0 +1,10 @@
+
+<p-megaMenu styleClass="flex justify-content-end flex-wrap">
+    <ng-template pTemplate="start">
+        <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" height="40" class="mr-2" />
+    </ng-template>
+    <ng-template pTemplate="end">        
+        <p-toast></p-toast>
+        <p-button (click)="show()" icon="pi pi-info-circle" label="Show"></p-button>
+    </ng-template>
+</p-megaMenu>

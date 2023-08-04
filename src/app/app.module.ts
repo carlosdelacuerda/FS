@@ -4,12 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { sponsoredsReducer } from 'src/app/state/reducers/sponsoreds.reducers';
 import { StoreModule } from '@ngrx/store';
-import { HeaderModule } from './modules/shared/header/header.module';
 import { EffectsModule } from '@ngrx/effects';
 import { ROOT_REDUCERS } from './state/app.state';
 import { SponsoredsEffects } from './state/effects/sponsoreds.effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import * as shareds from './modules/shareds'
 @NgModule({
   declarations: [
     AppComponent
@@ -18,9 +18,11 @@ import { SponsoredsEffects } from './state/effects/sponsoreds.effects';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot( ROOT_REDUCERS ),
-    HttpClientModule,
-    HeaderModule,
     EffectsModule.forRoot( [SponsoredsEffects] ),
+    BrowserAnimationsModule,
+    HttpClientModule,
+    shareds.HeaderModule,
+    shareds.DialogsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
