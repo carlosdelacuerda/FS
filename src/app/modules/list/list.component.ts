@@ -14,7 +14,6 @@ import { selectListSponsoreds } from 'src/app/state/selectors/sponsoreds.selecto
 export class ListComponent implements OnInit {
 
   sponsoreds$: Observable<ReadonlyArray<sponsoredsModel>> = new Observable;
-  loading$: Observable<boolean> = new Observable;
 
   constructor(
     private store: Store<AppState>,

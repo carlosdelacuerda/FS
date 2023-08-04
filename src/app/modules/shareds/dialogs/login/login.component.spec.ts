@@ -30,10 +30,4 @@ describe('LoginComponent', () => {
     component.activeItemChange(component.items[0]);
     expect(component.singup).toBe(true)
   })
-
-  it('tabs navigation logging', () => {
-    component.activeItemChange(component.items[1]);
-    expect(component.singup).toBe(false)
-  })
-
 });

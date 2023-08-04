@@ -27,10 +27,13 @@ export class LoginComponent implements OnInit {
   constructor(private store: Store<AppState>){}
 
   ngOnInit() {
-      this.store.select(selectLoginFeature).subscribe((tab) => {
+    this.login$ = this.store.select(selectLoginFeature)
+    this.login$.subscribe((tab) => {
         this.onChangeTab(tab)
       })
   }
+
+  
 
   activeItemChange(item:MenuItem){
     this.store.dispatch( actionLogin({login: item}))
