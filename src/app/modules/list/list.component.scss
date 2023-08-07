@@ -1,0 +1,12 @@
+@import '../../../assets/styles/guidestyle.scss';
+
+.fake-container {
+    display: flex;
+    max-width: 100%;
+    overflow: hidden;
+    flex-wrap: wrap;
+    flex-direction: row;
+    .fake-item {
+        padding: $size
+    }
+}

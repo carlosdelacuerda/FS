@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { LoginComponent } from '../dialogs/login/login.component';
@@ -9,19 +9,26 @@ import { LoginComponent } from '../dialogs/login/login.component';
   styleUrls: ['./header.component.scss'],
   providers: [DialogService, MessageService]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
     ref: DynamicDialogRef | undefined;
 
     constructor(public dialogService: DialogService,  public messageService: MessageService) {}
 
+    ngOnInit(): void {
+      this.show()
+    }
+
     show() {
       this.ref = this.dialogService.open(LoginComponent,
         {
           width: '70%',
+          height: '90%',
           contentStyle: { overflow: 'auto' },
           baseZIndex: 10000,
-          maximizable: false
+          maximizable: false,
+          header: 'Sing up or Logging',
+          dismissableMask: true
       });    
   }
 }

@@ -1,6 +1,6 @@
 import * as fromReducer from './sponsoreds.reducers';
 import { loadSponsoreds, loadedSponsoreds } from '../actions/sponsoreds.actions';
-import { sponsoredsModel } from 'src/app/models/sponsoreds.model';
+import { sponsoredsInterface } from 'src/app/models/sponsoreds.model';
  
 describe('Sponsored reducer', () => {
   describe('unknown action', () => {
@@ -27,7 +27,7 @@ describe('Sponsored reducer', () => {
 
     it('should retrieve all sponsoreds and update the state in an immutable way', () => {
       const { initialState } = fromReducer;
-      const newState: Array<sponsoredsModel> = [
+      const newState: Array<sponsoredsInterface> = [
         {
             id: 1,
             name: 'Carlos',

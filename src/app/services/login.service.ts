@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
- 
+
 import { Observable } from 'rxjs';
 import { sponsoredsInterface } from '../models/sponsoreds.model';
+
 
 @Injectable({
   providedIn: 'root'

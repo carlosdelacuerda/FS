@@ -6,6 +6,8 @@ import { SingupComponent } from './singup/singup.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -16,7 +18,9 @@ import { TabMenuModule } from 'primeng/tabmenu';
     CommonModule,
     InputTextModule,
     CheckboxModule,
-    TabMenuModule
+    TabMenuModule,
+    ReactiveFormsModule,
+    ButtonModule
   ],
   exports: [
     LoginComponent,

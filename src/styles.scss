@@ -1,3 +1,22 @@
 @import 'primeng/resources/themes/viva-light/theme.css';
 @import "primeicons/primeicons.css";
 @import '/node_modules/primeflex/primeflex.css';
+
+@import 'assets/styles/guidestyle.scss';
+
+.p-dialog-title {
+    width: 100%;
+    text-align: center;
+}
+
+.tabmenu-login {
+    margin-bottom: $size*2;
+    .p-tabmenuitem {
+        width: 50%;
+        a {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

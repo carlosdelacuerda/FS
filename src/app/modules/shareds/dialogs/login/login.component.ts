@@ -33,8 +33,6 @@ export class LoginComponent implements OnInit {
       })
   }
 
-  
-
   activeItemChange(item:MenuItem){
     this.store.dispatch( actionLogin({login: item}))
   }

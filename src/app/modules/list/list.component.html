@@ -1,1 +1,14 @@
-<app-sponsored *ngFor="let sponsored of sponsoreds$ | async"></app-sponsored>
+<ng-container *ngIf="showLoading">
+    <div class="fake-container">
+        <span class="fake-item">
+            <p-skeleton width="10rem" height="8rem"></p-skeleton>
+            <p-skeleton styleClass="mb-2" width="10rem"></p-skeleton>
+            <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton height="2rem" styleClass="mb-2" width="10rem"></p-skeleton>
+        </span> 
+    </div>
+</ng-container>
+<ng-container *ngIf="!showLoading">
+    <app-sponsored *ngFor="let sponsored of sponsoreds$ | async"></app-sponsored>
+</ng-container>

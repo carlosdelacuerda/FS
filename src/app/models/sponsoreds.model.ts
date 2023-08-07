@@ -1,4 +1,4 @@
-export interface sponsoredsModel {
+export interface sponsoredsInterface {
     id: number,
     name: string,
     birth: Date,
@@ -8,5 +8,5 @@ export interface sponsoredsModel {
 
 export interface sponsoredsState {
     loading: boolean,
-    sponsoredsList: ReadonlyArray<sponsoredsModel>
+    sponsoredsList: ReadonlyArray<sponsoredsInterface>
 }
