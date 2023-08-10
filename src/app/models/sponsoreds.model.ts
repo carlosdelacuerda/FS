@@ -8,5 +8,6 @@ export interface sponsoredsInterface {
 
 export interface sponsoredsState {
     loading: boolean,
-    sponsoredsList: ReadonlyArray<sponsoredsInterface>
+    sponsoredsList: ReadonlyArray<sponsoredsInterface>,
+    error: any
 }

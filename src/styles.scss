@@ -4,6 +4,25 @@
 
 @import 'assets/styles/guidestyle.scss';
 
+a {
+    color: $blue;
+}
+
+input[type='checkbox'] {
+    width: 0;
+    height: 0;
+}
+
+.legal .p-checkbox {
+    width: 40px;
+    margin-right: -5px;
+    top: -2px;
+}
+
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):focus {
+    box-shadow: none;
+}
+
 .p-dialog-title {
     width: 100%;
     text-align: center;
@@ -17,6 +36,37 @@
             width: 100%;
             display: flex;
             justify-content: center;
+        }
+    }
+}
+
+.login-modal .p-dialog-content {
+    padding: $size*2 0;
+}
+
+.form-login {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    .p-inputgroup {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: $size*2;
+        small {
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            color: #adadad;
+        }
+        input.ng-invalid + small {
+            opacity: 1;
+        }
+        small.red {
+            color: $red;
         }
     }
 }

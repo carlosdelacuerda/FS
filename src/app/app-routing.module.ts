@@ -11,8 +11,10 @@ const routes: Routes = [
     path: 'list',
     loadChildren: () => import('./modules/list/list.module').then(m => m.ListModule)
   },
-
-
+  {
+    path: 'legal',
+    loadChildren: () => import('./modules/shareds/legal/legal.module').then(m => m.LegalModule)
+  }
 ];
 
 @NgModule({

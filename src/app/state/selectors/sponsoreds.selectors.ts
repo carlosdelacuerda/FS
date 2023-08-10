@@ -12,3 +12,7 @@ export const selectListSponsoreds = createSelector(
     selectSponsoredsFeature,
     (state: sponsoredsState) => state.sponsoredsList
 )
+export const selectListSponsoredsError = createSelector(
+    selectSponsoredsFeature,
+    (state: sponsoredsState) => state.error
+)

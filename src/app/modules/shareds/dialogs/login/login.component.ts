@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MenuItem } from 'primeng/api';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { loginState } from 'src/app/models/login.model';
 import { actionLogin } from 'src/app/state/actions/login.actions';
 import { AppState } from 'src/app/state/app.state';
@@ -11,7 +11,7 @@ import { selectLoginFeature } from 'src/app/state/selectors/login.selectors';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   items: MenuItem[] = [
     { label: 'Sing Up', icon: 'pi pi-fw pi-user' },
@@ -24,13 +24,19 @@ export class LoginComponent implements OnInit {
 
   login$: Observable<loginState> = new Observable;
 
+  loginSubscription: Subscription = new Subscription;
+
   constructor(private store: Store<AppState>){}
 
   ngOnInit() {
-    this.login$ = this.store.select(selectLoginFeature)
-    this.login$.subscribe((tab) => {
+    this.login$ = this.store.select(selectLoginFeature);
+    this.loginSubscription = this.login$.subscribe((tab) => {
         this.onChangeTab(tab)
       })
+  }
+
+  ngOnDestroy(): void {
+    this.loginSubscription.unsubscribe()
   }
 
   activeItemChange(item:MenuItem){

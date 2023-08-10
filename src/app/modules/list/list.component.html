@@ -1,3 +1,6 @@
+<ng-container *ngIf="!showLoading && !showError">
+    <app-sponsored *ngFor="let sponsored of sponsoreds$ | async"></app-sponsored>
+</ng-container>
 <ng-container *ngIf="showLoading">
     <div class="fake-container">
         <span class="fake-item">
@@ -9,6 +12,4 @@
         </span> 
     </div>
 </ng-container>
-<ng-container *ngIf="!showLoading">
-    <app-sponsored *ngFor="let sponsored of sponsoreds$ | async"></app-sponsored>
-</ng-container>
+<app-page-error *ngIf="!showLoading && showError"></app-page-error>

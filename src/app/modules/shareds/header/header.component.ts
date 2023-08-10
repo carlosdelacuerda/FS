@@ -28,7 +28,9 @@ export class HeaderComponent implements OnInit {
           baseZIndex: 10000,
           maximizable: false,
           header: 'Sing up or Logging',
-          dismissableMask: true
+          showHeader: false,
+          dismissableMask: true,
+          styleClass: 'login-modal'
       });    
   }
 }

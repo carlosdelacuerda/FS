@@ -8,4 +8,9 @@ export const loadedSponsoreds = createAction(
   props<{sponsoreds: sponsoredsInterface[]}>()
 );
 
+export const loadedSponsoredsError = createAction(
+  '[Sponsoreds API] Sponsoreds Load Error',
+  props<{error: any}>
+)
+
    

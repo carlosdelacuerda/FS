@@ -37,7 +37,6 @@ export class LoggingComponent implements OnInit {
 
   logging(){
     this.user = this.formGroup.value;
-    console.log(this.user)
   }
 
 }

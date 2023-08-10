@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { ListComponent } from './list.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SkeletonModule } from 'primeng/skeleton';
+import { ErrorsModule } from '../shareds/errors/errors.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SkeletonModule } from 'primeng/skeleton';
     ListRoutingModule,
     CardModule,
     ButtonModule,
-    SkeletonModule
+    SkeletonModule,
+    ErrorsModule
   ],
   providers: [
     LoadingInterceptor,
