@@ -14,6 +14,14 @@ const routes: Routes = [
   {
     path: 'legal',
     loadChildren: () => import('./modules/shareds/legal/legal.module').then(m => m.LegalModule)
+  },
+  {
+    path: 'error',
+    loadChildren: () => import('./modules/shareds/errors/errors.module').then(m => m.ErrorsModule)
+  },
+  {
+    path: '**',
+    redirectTo: '/list'
   }
 ];
 

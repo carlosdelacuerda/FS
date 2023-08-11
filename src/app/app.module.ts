@@ -3,17 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ROOT_REDUCERS } from './state/app.state';
 import { SponsoredsEffects } from './state/effects/sponsoreds.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as shareds from './modules/shareds'
-import { InterceptorsModule } from './interceptors/interceptors.module';
+import * as interceptors from './interceptors';
 import { LottieModule, provideLottieOptions } from 'ngx-lottie';
 import player from 'lottie-web';
 import { LottiesModule } from './modules/shareds/lotties/lotties.module';
+import { ErrorsModule } from './modules/shareds/errors/errors.module';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 export function playerFactory() {
   return player;
@@ -32,15 +34,22 @@ export function playerFactory() {
     HttpClientModule,
     shareds.HeaderModule,
     shareds.DialogsModule,
-    InterceptorsModule,
     LottiesModule,
-    LottieModule.forRoot({ player: playerFactory })
+    ErrorsModule,
+    LottieModule.forRoot({ player: playerFactory }),
+    ProgressSpinnerModule
   ],
   bootstrap: [AppComponent],
   providers: [
     provideLottieOptions({
       player: () => import(/* webpackChunkName: 'lottie-web' */ 'lottie-web'),
     }),
+    interceptors.LoadingInterceptor,
+        {
+          provide: HTTP_INTERCEPTORS,
+          useExisting: interceptors.LoadingInterceptor,
+          multi: true
+        },
   ]
 })
 export class AppModule { }

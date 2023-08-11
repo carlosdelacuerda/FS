@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
           width: '70%',
           height: '90%',
           contentStyle: { overflow: 'auto' },
-          baseZIndex: 10000,
+          baseZIndex: 10,
           maximizable: false,
           header: 'Sing up or Logging',
           showHeader: false,

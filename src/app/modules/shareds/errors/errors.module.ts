@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageErrorComponent } from './page-error/page-error.component';
 import { LottiesModule } from '../lotties/lotties.module';
+import { ErrorsRoutingModule } from './errors-routing.module';
 
 @NgModule({
   declarations: [
@@ -9,10 +10,8 @@ import { LottiesModule } from '../lotties/lotties.module';
   ],
   imports: [
     CommonModule,
-    LottiesModule
-  ],
-  exports: [
-    PageErrorComponent
+    LottiesModule,
+    ErrorsRoutingModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

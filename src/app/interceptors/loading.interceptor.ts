@@ -14,7 +14,7 @@ export class LoadingInterceptor implements HttpInterceptor {
   public showLoading$: BehaviorSubject<boolean>;
 
   constructor() {
-    this.showLoading$ = new BehaviorSubject<boolean>(false);
+    this.showLoading$ = new BehaviorSubject<boolean>(true);
     this.countRequest = 0;
   }
 
