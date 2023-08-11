@@ -1,20 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
-import { sponsoredsInterface } from '../models/sponsoreds.model';
 import { registerInterface } from '../models/sponsors.model';
+import { environment } from 'src/environments/environments';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class SponsoredsService {
+
+  urlBase: string = environment.url
+
   constructor(private http: HttpClient) {}
  
   public register(user:registerInterface) {
-    const url = 'https://demo2552582.mockable.io/postRegister and http://demo2552582.mockable.io/postRegister';
+    const url = `${this.urlBase}postSponsor`
     this.http.post<registerInterface>(url, user)
-      .subscribe(res => console.log(res));
   }
 }

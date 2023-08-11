@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
+
 @Component({
   selector: 'app-singup',
   templateUrl: './singup.component.html',
