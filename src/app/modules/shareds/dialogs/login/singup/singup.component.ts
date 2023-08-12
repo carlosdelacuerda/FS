@@ -11,7 +11,9 @@ export class SingupComponent implements OnInit {
 
   public formGroup: any = FormGroup;
 
-  constructor( private formBuilder: FormBuilder, private ref: DynamicDialogRef ) { }
+  constructor(
+    private formBuilder: FormBuilder, private ref: DynamicDialogRef
+    ) { }
 
   public ngOnInit() {
     this.buildForm();

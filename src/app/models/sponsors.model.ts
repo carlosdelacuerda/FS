@@ -1,12 +1,8 @@
-export interface sponsorInterface {
+export interface SponsorInterface {
+    token: string,
     id: number,
     nick: string,
-    img: string
+    img: string,
+    favorites: number[]
 }
 
-export interface registerInterface {
-    registeredOn: Date,
-    name: string,
-    email: string,
-    password: string
-}

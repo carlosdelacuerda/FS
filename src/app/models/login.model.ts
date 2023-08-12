@@ -1,11 +1,19 @@
-import { MenuItem } from "primeng/api"
+import { MenuItem } from "primeng/api";
 
-export interface loginState {
+export interface LoginState {
     login: MenuItem
 }
 
-export interface loginInterface {
+export interface LoggingInterface {
     email: string,
     password: string
+}
+
+export interface SingupInterface {
+    registeredOn: Date,
+    name: string,
+    email: string,
+    passord: string,
+    legal: any[]
 }
 

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MenuItem } from 'primeng/api';
 import { Observable, Subscription } from 'rxjs';
-import { loginState } from 'src/app/models/login.model';
+import { LoginState } from 'src/app/models/login.model';
 import { actionLogin } from 'src/app/state/actions/login.actions';
 import { AppState } from 'src/app/state/app.state';
 import { selectLoginFeature } from 'src/app/state/selectors/login.selectors';
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   singup: boolean = true;
 
-  login$: Observable<loginState> = new Observable;
+  login$: Observable<LoginState> = new Observable;
 
   loginSubscription: Subscription = new Subscription;
 
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.store.dispatch( actionLogin({login: item}))
   }
 
-  onChangeTab(tab:loginState){
+  onChangeTab(tab:LoginState){
       tab.login.label === 'Sing Up' ?
       (this.singup = true ,
       this.activeItem = this.items[0]):

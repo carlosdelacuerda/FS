@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { registerInterface } from '../models/sponsors.model';
 import { environment } from 'src/environments/environments';
-
+import { SingupInterface } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +13,8 @@ export class SponsoredsService {
 
   constructor(private http: HttpClient) {}
  
-  public register(user:registerInterface) {
+  public register(user:SingupInterface) {
     const url = `${this.urlBase}postSponsor`
-    this.http.post<registerInterface>(url, user)
+    this.http.post<SingupInterface>(url, user)
   }
 }
