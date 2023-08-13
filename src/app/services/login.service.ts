@@ -7,7 +7,7 @@ import { SingupInterface } from '../models/login.model';
 @Injectable({
   providedIn: 'root'
 })
-export class SponsoredsService {
+export class LoginService {
 
   urlBase: string = environment.url
 
@@ -15,6 +15,6 @@ export class SponsoredsService {
  
   public register(user:SingupInterface) {
     const url = `${this.urlBase}postSponsor`
-    this.http.post<SingupInterface>(url, user)
+    return this.http.post<string>(url, user)
   }
 }

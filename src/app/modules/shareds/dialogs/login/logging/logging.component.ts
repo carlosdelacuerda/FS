@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { loginInterface } from 'src/app/models/login.model';
+import { LoggingInterface } from 'src/app/models/login.model';
 
 @Component({
   selector: 'app-logging',
@@ -11,7 +11,7 @@ export class LoggingComponent implements OnInit {
 
   public formGroup:any = FormGroup;
 
-  user: loginInterface = {
+  user: LoggingInterface = {
     email: '',
     password: ''
   };
