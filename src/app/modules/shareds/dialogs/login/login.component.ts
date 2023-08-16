@@ -2,10 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MenuItem } from 'primeng/api';
 import { Observable, Subscription } from 'rxjs';
-import { LoginState } from 'src/app/models/login.model';
-import { actionLogin } from 'src/app/state/actions/login.actions';
+import { LoginTabsState } from 'src/app/interfaces/login.model';
+import { actionTabsLogin } from 'src/app/state/actions/login.actions';
 import { AppState } from 'src/app/state/app.state';
-import { selectLoginFeature } from 'src/app/state/selectors/login.selectors';
+import { selectTabsLoginFeature } from 'src/app/state/selectors/login.selectors';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,14 +22,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   singup: boolean = true;
 
-  login$: Observable<LoginState> = new Observable;
+  login$: Observable<LoginTabsState> = new Observable;
 
   loginSubscription: Subscription = new Subscription;
 
   constructor(private store: Store<AppState>){}
 
   ngOnInit() {
-    this.login$ = this.store.select(selectLoginFeature);
+    this.login$ = this.store.select(selectTabsLoginFeature);
     this.loginSubscription = this.login$.subscribe((tab) => {
         this.onChangeTab(tab)
       })
@@ -40,10 +40,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   activeItemChange(item:MenuItem){
-    this.store.dispatch( actionLogin({login: item}))
+    this.store.dispatch( actionTabsLogin({login: item}))
   }
 
-  onChangeTab(tab:LoginState){
+  onChangeTab(tab:LoginTabsState){
       tab.login.label === 'Sing Up' ?
       (this.singup = true ,
       this.activeItem = this.items[0]):

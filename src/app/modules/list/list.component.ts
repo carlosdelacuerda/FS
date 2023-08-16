@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { sponsoredsInterface } from 'src/app/models/sponsoreds.model';
+import { sponsoredsInterface } from 'src/app/interfaces/sponsoreds.model';
 import { Observable, Subscription } from 'rxjs';
 import { loadSponsoreds } from 'src/app/state/actions/sponsoreds.actions';
 import { AppState } from 'src/app/state/app.state';

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { sponsoredsInterface } from 'src/app/models/sponsoreds.model';
+import { sponsoredsInterface } from 'src/app/interfaces/sponsoreds.model';
 
 export const loadSponsoreds = createAction('[Sponsoreds API] Load Sponsoreds');
 

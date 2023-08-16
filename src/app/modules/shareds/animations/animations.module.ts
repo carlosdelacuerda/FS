@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ErrorLottieComponent } from './error.lottie';
+import { ErrorAnimationComponent } from './error.animation';
 import { LottieModule } from 'ngx-lottie';
 
 import player from 'lottie-web';
@@ -11,14 +11,14 @@ export function playerFactory(): any {
 
 @NgModule({
   declarations: [
-    ErrorLottieComponent
+    ErrorAnimationComponent
   ],
   imports: [
     CommonModule,
     LottieModule.forRoot({ player: playerFactory })
   ],
   exports: [
-    ErrorLottieComponent
+    ErrorAnimationComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

@@ -13,9 +13,10 @@ import * as shareds from './modules/shareds'
 import * as interceptors from './interceptors';
 import { LottieModule, provideLottieOptions } from 'ngx-lottie';
 import player from 'lottie-web';
-import { LottiesModule } from './modules/shareds/lotties/lotties.module';
+import { LottiesModule } from './modules/shareds/animations/animations.module';
 import { ErrorsModule } from './modules/shareds/errors/errors.module';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { loginEffects } from './state/effects/login.effects';
 
 export function playerFactory() {
   return player;
@@ -29,7 +30,7 @@ export function playerFactory() {
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot( ROOT_REDUCERS ),
-    EffectsModule.forRoot( [SponsoredsEffects] ),
+    EffectsModule.forRoot( [SponsoredsEffects, loginEffects] ),
     BrowserAnimationsModule,
     HttpClientModule,
     shareds.HeaderModule,

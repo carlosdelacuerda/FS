@@ -8,7 +8,7 @@ import { LoadingInterceptor } from './interceptors';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
-  title = 'sfg';
+  title = 'FS';
 
   showLoading: boolean = false;
   showLoading$: Observable<any> = new Observable;

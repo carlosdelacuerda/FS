@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { createEffect, Actions, ofType } from "@ngrx/effects";
-import { EMPTY, of } from "rxjs";
-import { map, mergeMap, catchError } from "rxjs";
+import { map, mergeMap, catchError, of } from "rxjs";
 import { SponsoredsService } from "src/app/services/sponsoreds.service";
 
 @Injectable()

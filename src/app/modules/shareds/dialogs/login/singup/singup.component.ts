@@ -1,15 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
-import { LoginService } from 'src/app/services/login.service';
 import { Observable, Subscription } from 'rxjs';
+import { actionSingup } from 'src/app/state/actions/login.actions';
+import { AppState } from 'src/app/state/app.state';
+import { selectToken } from 'src/app/state/selectors/login.selectors';
 
 @Component({
   selector: 'app-singup',
   templateUrl: './singup.component.html',
   styleUrls: ['./singup.component.scss']
 })
-export class SingupComponent implements OnInit, OnDestroy {
+export class SingupComponent implements OnInit {
 
   public formGroup: any = FormGroup;
   token$: Observable<string>= new Observable;
@@ -18,18 +21,11 @@ export class SingupComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private ref: DynamicDialogRef,
-    private loginService: LoginService
+    private store: Store<AppState>
     ) { }
 
   public ngOnInit() {
     this.buildForm();
-    this.token = this.token$.subscribe((token) => {
-      console.log('token', token)
-    })
-  }
-
-  ngOnDestroy(): void {
-    this.token.unsubscribe()
   }
 
   public register() {
@@ -43,7 +39,7 @@ export class SingupComponent implements OnInit, OnDestroy {
       document.querySelector('.legal label')?.classList.add('p-error')
     }
     if(!this.formGroup.invalid) {
-      this.token$ = this.loginService.register(this.formGroup.value)
+      this.store.dispatch(actionSingup(this.formGroup.value))
     }
   }
 

@@ -1,6 +1,6 @@
 import { MenuItem } from "primeng/api";
 
-export interface LoginState {
+export interface LoginTabsState {
     login: MenuItem
 }
 
@@ -15,5 +15,10 @@ export interface SingupInterface {
     email: string,
     passord: string,
     legal: any[]
+}
+
+export interface LoggedState {
+    logged: boolean,
+    token: string
 }
 

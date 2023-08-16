@@ -1,6 +1,6 @@
 import { createSelector } from "@ngrx/store";
 import { AppState } from "../app.state";
-import { sponsoredsState } from "src/app/models/sponsoreds.model";
+import { sponsoredsState } from "src/app/interfaces/sponsoreds.model";
 
 export const selectSponsoredsFeature = (state: AppState) => state.sponsoreds
 

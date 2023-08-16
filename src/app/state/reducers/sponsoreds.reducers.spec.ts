@@ -1,6 +1,6 @@
 import * as fromReducer from './sponsoreds.reducers';
 import { loadSponsoreds, loadedSponsoreds } from '../actions/sponsoreds.actions';
-import { sponsoredsInterface } from 'src/app/models/sponsoreds.model';
+import { sponsoredsInterface } from 'src/app/interfaces/sponsoreds.model';
  
 describe('Sponsored reducer', () => {
   describe('unknown action', () => {
