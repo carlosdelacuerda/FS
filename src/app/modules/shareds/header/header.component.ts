@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { LoginComponent } from '../dialogs/login/login.component';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectLoggingFeature } from 'src/app/state/selectors/login.selectors';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +15,18 @@ import { LoginComponent } from '../dialogs/login/login.component';
 export class HeaderComponent implements OnInit {
 
     ref: DynamicDialogRef | undefined;
+    logged: boolean = false;
+    logged$: Observable<any> = new Observable;
 
-    constructor(public dialogService: DialogService,  public messageService: MessageService) {}
+    constructor(
+      public dialogService: DialogService,
+      public messageService: MessageService,
+      private store: Store
+      ) {}
 
     ngOnInit(): void {
-      this.show()
+      this.logged$ = this.store.select(selectLoggingFeature)
+      this.logged$.subscribe(console.log)
     }
 
     show() {

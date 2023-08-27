@@ -1,4 +1,4 @@
-export interface sponsoredsInterface {
+export interface SponsoredsInterface {
     id: number,
     name: string,
     birth: Date,
@@ -8,6 +8,6 @@ export interface sponsoredsInterface {
 
 export interface sponsoredsState {
     loading: boolean,
-    sponsoredsList: ReadonlyArray<sponsoredsInterface>,
+    sponsoredsList: ReadonlyArray<SponsoredsInterface>,
     error: any
 }

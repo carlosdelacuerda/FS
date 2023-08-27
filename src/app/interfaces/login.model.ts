@@ -17,8 +17,4 @@ export interface SingupInterface {
     legal: any[]
 }
 
-export interface LoggedState {
-    logged: boolean,
-    token: string
-}
 

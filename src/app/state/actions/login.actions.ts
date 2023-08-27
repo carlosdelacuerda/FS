@@ -1,25 +1,26 @@
 import { createAction, props } from '@ngrx/store';
 import { MenuItem } from 'primeng/api';
-import { SingupInterface } from 'src/app/interfaces/login.model'; 
+import { SponsorInterface } from 'src/app/interfaces/sponsors.model';
 
 export const actionTabsLogin = createAction(
   '[Login] change tab login',
   props<{login: MenuItem}>()
 );
 
-export const actionSingup = createAction(
-  '[Login] sing up',
-  props<{token: string}>()
+export const actionLogging = createAction(
+  '[Login] logging'
 )
 
-export const singupSuccess = createAction(
-  '[Login] sing up success',
-  props<{token: string}>
+export const actionLoggingSuccess = createAction(
+  '[Login] Login Success',
+  props<{sponsor: SponsorInterface}>()
 )
 
-export const singupFailure = createAction(
-  '[Login] sing up failure',
-  props<any>()
+export const actionLoggingError = createAction(
+  '[Login] Login Error',
+  props<{error: any}>
 )
+
+
 
    

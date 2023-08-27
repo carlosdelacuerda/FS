@@ -8,12 +8,14 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { ConfirmationSentComponent } from './confirmation-sent/confirmation-sent.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     LoggingComponent,
-    SingupComponent
+    SingupComponent,
+    ConfirmationSentComponent
   ],
   imports: [
     CommonModule,

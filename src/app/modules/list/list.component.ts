@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { sponsoredsInterface } from 'src/app/interfaces/sponsoreds.model';
+import { SponsoredsInterface } from 'src/app/interfaces/sponsoreds.model';
 import { Observable, Subscription } from 'rxjs';
 import { loadSponsoreds } from 'src/app/state/actions/sponsoreds.actions';
 import { AppState } from 'src/app/state/app.state';
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class ListComponent implements OnInit, OnDestroy {
 
-  sponsoreds$: Observable<ReadonlyArray<sponsoredsInterface>> = new Observable;
+  sponsoreds$: Observable<ReadonlyArray<SponsoredsInterface>> = new Observable;
   errorLoading$: Observable<any> = new Observable;
   errorLoading: Subscription = new Subscription 
 

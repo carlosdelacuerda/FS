@@ -19,11 +19,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   ];
 
   activeItem: MenuItem | undefined;
-
   singup: boolean = true;
-
+  confirmationSent: boolean = false
   login$: Observable<LoginTabsState> = new Observable;
-
   loginSubscription: Subscription = new Subscription;
 
   constructor(private store: Store<AppState>){}
@@ -44,7 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onChangeTab(tab:LoginTabsState){
-      tab.login.label === 'Sing Up' ?
+      return tab.login.label === 'Sing Up' ?
       (this.singup = true ,
       this.activeItem = this.items[0]):
       (this.singup = false,

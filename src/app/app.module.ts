@@ -16,7 +16,7 @@ import player from 'lottie-web';
 import { LottiesModule } from './modules/shareds/animations/animations.module';
 import { ErrorsModule } from './modules/shareds/errors/errors.module';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { loginEffects } from './state/effects/login.effects';
+import { LoginEffects } from './state/effects/login.effects';
 
 export function playerFactory() {
   return player;
@@ -30,7 +30,7 @@ export function playerFactory() {
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot( ROOT_REDUCERS ),
-    EffectsModule.forRoot( [SponsoredsEffects, loginEffects] ),
+    EffectsModule.forRoot( [SponsoredsEffects, LoginEffects] ),
     BrowserAnimationsModule,
     HttpClientModule,
     shareds.HeaderModule,

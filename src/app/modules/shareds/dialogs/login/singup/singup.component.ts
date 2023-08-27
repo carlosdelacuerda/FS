@@ -1,31 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
-import { Observable, Subscription } from 'rxjs';
-import { actionSingup } from 'src/app/state/actions/login.actions';
-import { AppState } from 'src/app/state/app.state';
-import { selectToken } from 'src/app/state/selectors/login.selectors';
+import { Observable, Observer, Subscription, first } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import { LoginService } from 'src/app/services/login.service';
+import { actionLogging } from 'src/app/state/actions/login.actions';
 
 @Component({
   selector: 'app-singup',
   templateUrl: './singup.component.html',
   styleUrls: ['./singup.component.scss']
 })
-export class SingupComponent implements OnInit {
+export class SingupComponent implements OnInit, OnDestroy {
 
   public formGroup: any = FormGroup;
-  token$: Observable<string>= new Observable;
-  token: Subscription = new Subscription;
-
+  waitingConfirmation$: Observable<any> = new Observable;
+  waitingConfirmation: Subscription = new Subscription;
+  
   constructor(
     private formBuilder: FormBuilder,
     private ref: DynamicDialogRef,
-    private store: Store<AppState>
+    private loginService: LoginService,
+    public store: Store
     ) { }
 
   public ngOnInit() {
     this.buildForm();
+  }
+
+  ngOnDestroy(): void {
+    this.waitingConfirmation.unsubscribe();
   }
 
   public register() {
@@ -39,7 +44,15 @@ export class SingupComponent implements OnInit {
       document.querySelector('.legal label')?.classList.add('p-error')
     }
     if(!this.formGroup.invalid) {
-      this.store.dispatch(actionSingup(this.formGroup.value))
+      const observer: Observer<any> = {
+        next: (token) => localStorage.setItem('token', token),
+        error: (err) => console.log(err),
+        complete: () => this.store.dispatch(actionLogging())
+      }
+      const register$ = this.loginService.register(this.formGroup.value);
+      register$.pipe(
+        first()
+      ).subscribe(observer)
     }
   }
 

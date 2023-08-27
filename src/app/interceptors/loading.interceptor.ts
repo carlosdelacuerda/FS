@@ -19,11 +19,23 @@ export class LoadingInterceptor implements HttpInterceptor {
   }
 
   public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const token = localStorage.getItem('token');
+    let req = request;
+
     if (!this.countRequest) {
       this.showLoading$.next(true);
     }
+
+    if (token) {
+      req = request.clone({
+        setHeaders: {
+          authorization: `Bearer ${ token }`
+        }
+      });
+    }
+
     this.countRequest++;
-    return next.handle(request)
+    return next.handle(req)
       .pipe(
         finalize(() => {
           this.countRequest--;

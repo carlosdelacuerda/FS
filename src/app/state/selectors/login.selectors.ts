@@ -1,17 +1,26 @@
 import { createSelector } from "@ngrx/store";
 import { AppState } from "../app.state";
-import { LoggedState, LoginTabsState } from "src/app/interfaces/login.model";
+import { LoginTabsState } from "src/app/interfaces/login.model";
+import { SponsorState } from "src/app/interfaces/sponsors.model";
 
 export const selectTabsLoginFeature = (state: AppState) => state.loginTabs
-
-export const selectTokenFeature = (state: AppState) => state.token
-
-export const selectLogin = createSelector(
+export const selectTabsLogin = createSelector(
     selectTabsLoginFeature,
-    (state: LoginTabsState) => state
+    (state: LoginTabsState) => state.login
 )
 
-export const selectToken = createSelector(
-    selectTokenFeature,
-    (state: LoggedState) => state
+export const selectLoggingFeature:any = (state: AppState) => state.sponsor;
+
+export const selectLogging:any = createSelector(
+    selectLoggingFeature,
+    (state: SponsorState) => state.sponsor
 )
+
+export const selectLoggingError:any = createSelector(
+    selectLoggingFeature,
+    (state: SponsorState) => state.error
+)
+
+
+
+

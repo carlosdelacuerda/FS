@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/login.actions';
-import { LoggedState, LoginTabsState } from 'src/app/interfaces/login.model';
+import { LoginTabsState } from 'src/app/interfaces/login.model';
+import {  SponsorState } from 'src/app/interfaces/sponsors.model';
 
 export const initialTabsState: LoginTabsState = {
   login: {
@@ -8,7 +9,6 @@ export const initialTabsState: LoginTabsState = {
       icon: 'pi pi-fw pi-user'
   }
 }
-
 export const loginTabsReducer = createReducer(
   initialTabsState,
   on(actions.actionTabsLogin, (state, login) => {
@@ -17,20 +17,29 @@ export const loginTabsReducer = createReducer(
   )
 )
 
-export const initialState: LoggedState = {
-  logged: false,
-  token: ''
+export const initialSponsorState: SponsorState = {
+    sponsor: {
+      logged: false,
+      id: 0,
+      validated: false,
+      name: '',
+      img: '',
+      favorites: []
+    }
 }
+export const loggingReducer = createReducer(
+  initialSponsorState,
 
-export const tokenReducer = createReducer(
-  initialState,
-  on(actions.actionSingup, (token) => {
-    return {...token}
+  on(actions.actionLogging, (state) => {
+    return {...state}
   }),
-  on(actions.singupSuccess, (state, token) => {
-    return {...state, ...token}
+
+  on(actions.actionLoggingSuccess, (state, sponsor) => {
+    return {...state, ...sponsor, logged: true}
   }),
-  on(actions.singupFailure, (state, error) => {
-    return {...state, logged:false, error}
+  
+  on(actions.actionLoggingError, (state, error) => {
+    return {...state, error}
   })
+
 )

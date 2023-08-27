@@ -5,10 +5,12 @@ import { MegaMenuModule } from 'primeng/megamenu';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
+import { LoggedComponent } from './logged/logged.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    LoggedComponent,
   ],
   imports: [
     CommonModule,

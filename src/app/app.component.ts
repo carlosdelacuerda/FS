@@ -1,6 +1,8 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { LoadingInterceptor } from './interceptors';
+
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,8 @@ export class AppComponent implements AfterViewInit {
   loadingSubscribe: Subscription = new Subscription;
 
   constructor(
-    public  loadingInterceptor: LoadingInterceptor
+    public  loadingInterceptor: LoadingInterceptor,
+    public store: Store
   ){}
 
   ngAfterViewInit(): void {

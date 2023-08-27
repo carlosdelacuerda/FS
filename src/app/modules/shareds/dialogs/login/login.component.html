@@ -1,3 +1,10 @@
-<p-tabMenu styleClass="tabmenu-login" [model]="items" [activeItem]="activeItem" (activeItemChange)="activeItemChange($event)"></p-tabMenu>
+<p-tabMenu 
+*ngIf="!confirmationSent"
+styleClass="tabmenu-login"
+[model]="items"
+[activeItem]="activeItem"
+(activeItemChange)="activeItemChange($event)">
+</p-tabMenu>
 <app-singup *ngIf="singup" class="tab-login"></app-singup>
-<app-logging *ngIf="!singup" class="flex-wrap 50w"></app-logging>
+<app-logging *ngIf="!singup && !confirmationSent" class="flex-wrap 50w"></app-logging>
+<app-confirmation-sent *ngIf="confirmationSent"></app-confirmation-sent>

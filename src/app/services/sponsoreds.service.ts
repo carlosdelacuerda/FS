@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
  
 import { Observable } from 'rxjs';
-import { sponsoredsInterface } from '../interfaces/sponsoreds.model';
+import { SponsoredsInterface } from '../interfaces/sponsoreds.model';
 import { environment } from 'src/environments/environments';
 
 @Injectable({
@@ -14,10 +14,10 @@ export class SponsoredsService {
 
   constructor(private http: HttpClient) {}
  
-  getSponsoreds(): Observable<Array<sponsoredsInterface>> {
-    return this.http
-      .get<sponsoredsInterface[] >(
-        `${this.urlBase}getSponsoreds`
-      )
+  getSponsoreds(): Observable<any> {
+        return this.http
+          .get<SponsoredsInterface[] >(
+            `${this.urlBase}getSponsoreds`
+          )
   }
 }
