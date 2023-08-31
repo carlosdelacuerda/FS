@@ -1,0 +1,11 @@
+<ng-container *ngIf="!confirmationSent">
+    <p-tabMenu 
+    styleClass="tabmenu-login"
+    [model]="items"
+    [activeItem]="activeItem"
+    (activeItemChange)="activeItemChange($event)">
+    </p-tabMenu>
+    <app-singup *ngIf="singup" class="tab-login"></app-singup>
+    <app-logging *ngIf="!singup" class="flex-wrap 50w"></app-logging>
+</ng-container>
+<app-confirmation-sent *ngIf="confirmationSent"></app-confirmation-sent>

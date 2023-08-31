@@ -1,5 +1,4 @@
 export interface SponsorInterface {
-    logged?: boolean,
     id: number,
     validated: boolean,
     name: string,
@@ -9,6 +8,7 @@ export interface SponsorInterface {
 
 export interface SponsorState {
     sponsor: SponsorInterface,
-    error?: any
+    error?: any,
+    logged?: boolean
 }
 

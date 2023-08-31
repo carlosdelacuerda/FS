@@ -9,12 +9,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { ROOT_REDUCERS } from './state/app.state';
 import { SponsoredsEffects } from './state/effects/sponsoreds.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import * as shareds from './modules/shareds'
 import * as interceptors from './interceptors';
 import { LottieModule, provideLottieOptions } from 'ngx-lottie';
 import player from 'lottie-web';
-import { LottiesModule } from './modules/shareds/animations/animations.module';
-import { ErrorsModule } from './modules/shareds/errors/errors.module';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { LoginEffects } from './state/effects/login.effects';
 
@@ -33,10 +30,6 @@ export function playerFactory() {
     EffectsModule.forRoot( [SponsoredsEffects, LoginEffects] ),
     BrowserAnimationsModule,
     HttpClientModule,
-    shareds.HeaderModule,
-    shareds.DialogsModule,
-    LottiesModule,
-    ErrorsModule,
     LottieModule.forRoot({ player: playerFactory }),
     ProgressSpinnerModule
   ],

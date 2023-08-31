@@ -14,7 +14,7 @@ export class LoadingInterceptor implements HttpInterceptor {
   public showLoading$: BehaviorSubject<boolean>;
 
   constructor() {
-    this.showLoading$ = new BehaviorSubject<boolean>(true);
+    this.showLoading$ = new BehaviorSubject<boolean>(false);
     this.countRequest = 0;
   }
 
@@ -22,9 +22,13 @@ export class LoadingInterceptor implements HttpInterceptor {
     const token = localStorage.getItem('token');
     let req = request;
 
-    if (!this.countRequest) {
-      this.showLoading$.next(true);
-    }
+    this.countRequest++;
+
+    setTimeout(() => {
+      if (this.countRequest) {
+        this.showLoading$.next(true);
+      }
+    }, );
 
     if (token) {
       req = request.clone({
@@ -33,8 +37,7 @@ export class LoadingInterceptor implements HttpInterceptor {
         }
       });
     }
-
-    this.countRequest++;
+    
     return next.handle(req)
       .pipe(
         finalize(() => {

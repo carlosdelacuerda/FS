@@ -18,8 +18,8 @@ export const loginTabsReducer = createReducer(
 )
 
 export const initialSponsorState: SponsorState = {
+    logged: false,
     sponsor: {
-      logged: false,
       id: 0,
       validated: false,
       name: '',

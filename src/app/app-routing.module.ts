@@ -4,24 +4,24 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/list',
+    redirectTo: '/home',
     pathMatch: 'full' 
   },
   {
-    path: 'list',
-    loadChildren: () => import('./modules/list/list.module').then(m => m.ListModule)
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'legal',
-    loadChildren: () => import('./modules/shareds/legal/legal.module').then(m => m.LegalModule)
+    loadChildren: () => import('./pages/legal/legal.module').then(m => m.LegalModule)
   },
   {
     path: 'error',
-    loadChildren: () => import('./modules/shareds/errors/errors.module').then(m => m.ErrorsModule)
+    loadChildren: () => import('./pages/errors/pageErrors.module').then(m => m.ErrorsModule)
   },
   {
     path: '**',
-    redirectTo: '/list'
+    redirectTo: 'error'
   }
 ];
 
