@@ -6,6 +6,7 @@ import { SponsoredComponent } from './components/sponsored/sponsored.component';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { ListComponent } from './list.component';
+import { ErrorsModule } from '../shareds';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ListComponent } from './list.component';
     CommonModule,
     ListRoutingModule,
     CardModule,
-    ButtonModule
+    ButtonModule,
+    ErrorsModule
   ]
 })
 export class ListModule { }

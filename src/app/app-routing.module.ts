@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'error',
-    loadChildren: () => import('./pages/errors/pageErrors.module').then(m => m.ErrorsModule)
+    loadChildren: () => import('./pages/errors/pageErrors.module').then(m => m.PageErrorsModule)
   },
   {
     path: '**',

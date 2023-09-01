@@ -1,1 +1,7 @@
-<p>page-not-found works!</p>
+<div class="error-container">
+    <h2 class="p-component p-error">Page not found<br>
+    Redirecting to home in {{ counter }}
+    </h2>
+    <p-button label="Go home now" (onClick)="goHome()"></p-button>
+    <app-not-found-animation></app-not-found-animation>
+</div>

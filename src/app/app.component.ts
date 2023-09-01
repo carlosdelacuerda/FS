@@ -22,13 +22,11 @@ export class AppComponent implements AfterViewInit {
   ){}
 
   ngAfterViewInit(): void {
-    console.log(`antes`, this.showLoading)
     setTimeout(() => {
       this.showLoading$ = this.loadingInterceptor.showLoading$
       this.loadingSubscribe = this.showLoading$.subscribe(state => {
         this.showLoading = state
       })
-      console.log(`des`, this.showLoading)
     });
   }
 }

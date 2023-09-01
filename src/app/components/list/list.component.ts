@@ -16,7 +16,8 @@ export class ListComponent implements OnInit, OnDestroy {
 
   sponsoreds$: Observable<ReadonlyArray<SponsoredsInterface>> = new Observable;
   errorLoading$: Observable<any> = new Observable;
-  errorLoading: Subscription = new Subscription 
+  errorLoading: Subscription = new Subscription;
+  error: boolean = false;
 
   constructor(
     private store: Store<AppState>,
@@ -29,7 +30,7 @@ export class ListComponent implements OnInit, OnDestroy {
     this.errorLoading$ = this.store.select(selectListSponsoredsError)
     this.errorLoading = this.errorLoading$.subscribe(error => {
       if(error) {
-        this.router.navigate(['home/error']);
+        this.error = true;
       }
     })
   }

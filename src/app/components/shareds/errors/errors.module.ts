@@ -4,6 +4,7 @@ import { PageErrorComponent } from './page-error/page-error.component';
 import { LottiesModule } from '../animations/animations.module';
 import { ErrorsRoutingModule } from './errors-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   imports: [
     CommonModule,
     LottiesModule,
-    ErrorsRoutingModule
+    ErrorsRoutingModule,
+    ButtonModule
+  ],
+  exports: [
+    PageErrorComponent,
+    PageNotFoundComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

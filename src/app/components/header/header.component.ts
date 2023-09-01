@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
-import { LoginComponent } from '../dialogs/login/login.component';
+import { LoginComponent } from '../shareds/dialogs/login/login.component';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription, asyncScheduler, map, tap } from 'rxjs';
+import { Observable, Subscription, tap } from 'rxjs';
 import { selectLoggingFeature } from 'src/app/state/selectors/login.selectors';
-import { SponsorInterface, SponsorState } from 'src/app/interfaces/sponsors.model';
 
 @Component({
   selector: 'app-header',
@@ -29,9 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
       this.logged$ = this.store.select(selectLoggingFeature).pipe(
         tap(state => {
-          state.logged && state.sponsor.validated
-          ? this.identified = true
-          : this.identified = false
+          this.identified = !!(state.logged && state.sponsor.validated)
           return state})
       )
       this.logged = this.logged$.subscribe()

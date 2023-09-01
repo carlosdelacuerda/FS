@@ -7,11 +7,6 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     loadChildren: () => import('../../components/list/list.module').then(m => m.ListModule)
-  },
-  {
-    path: 'error',
-    component: HomeComponent,
-    loadChildren: () => import('../../components/shareds/errors/errors.module').then(m => m.ErrorsModule)
   }
 ];
 
