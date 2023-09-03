@@ -17,4 +17,8 @@ export interface SingupInterface {
     legal: any[]
 }
 
+export interface LoginFeatureInterface {
+    
+}
+
 

@@ -1,0 +1,13 @@
+@import "../../../../assets/styles/guidestyle.scss";    
+
+.logged-container {
+    span{
+        background-color: white;
+        padding: $size;
+        border-radius: 100%;
+        margin: 0 $size;
+        font-size: $size*3;
+        color: $red;
+        cursor: pointer;
+    }
+}

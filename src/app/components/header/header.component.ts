@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
       this.logged$ = this.store.select(selectLoggingFeature).pipe(
         tap(state => {
-          this.identified = !!(state.logged && state.sponsor.validated)
+          this.identified = !!(state.logged)
           return state})
       )
       this.logged = this.logged$.subscribe()

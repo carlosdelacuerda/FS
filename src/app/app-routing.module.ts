@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { sponsorLoginGuard } from './guards/sponsor-login.guard';
 
 const routes: Routes = [
   {
@@ -10,6 +11,11 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: 'settings',
+    canActivate: [sponsorLoginGuard],
+    loadChildren: () => import('./pages/sponsor-settings/sponsor-settings.module').then(m => m.SponsorSettingsModule)
   },
   {
     path: 'legal',
