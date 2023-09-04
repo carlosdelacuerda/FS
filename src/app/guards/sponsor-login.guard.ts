@@ -8,9 +8,9 @@ export const sponsorLoginGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ) => {
-  const callStore = (inject(Store));
+  const store = (inject(Store));
   const router = (inject(Router));
-  const isLogged$ = callStore.select(selectLoggingFeature).pipe(
+  const isLogged$ = store.select(selectLoggingFeature).pipe(
     tap((isLogged:any) => {
       if (!isLogged.logged) {
         router.navigate(['/error'])
