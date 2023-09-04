@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { sponsoredsState } from 'src/app/models/sponsoreds.model';
+import { sponsoredsState } from 'src/app/interfaces/sponsoreds.model';
 import { loadSponsoreds, loadedSponsoreds, loadedSponsoredsError } from '../actions/sponsoreds.actions';
 
 export const initialState: sponsoredsState = {

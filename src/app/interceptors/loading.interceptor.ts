@@ -14,16 +14,31 @@ export class LoadingInterceptor implements HttpInterceptor {
   public showLoading$: BehaviorSubject<boolean>;
 
   constructor() {
-    this.showLoading$ = new BehaviorSubject<boolean>(true);
+    this.showLoading$ = new BehaviorSubject<boolean>(false);
     this.countRequest = 0;
   }
 
   public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (!this.countRequest) {
-      this.showLoading$.next(true);
-    }
+    const token = localStorage.getItem('token');
+    let req = request;
+
     this.countRequest++;
-    return next.handle(request)
+
+    setTimeout(() => {
+      if (this.countRequest) {
+        this.showLoading$.next(true);
+      }
+    }, );
+
+    if (token) {
+      req = request.clone({
+        setHeaders: {
+          authorization: `Bearer ${ token }`
+        }
+      });
+    }
+    
+    return next.handle(req)
       .pipe(
         finalize(() => {
           this.countRequest--;

@@ -1,4 +1,4 @@
-@import 'primeng/resources/themes/viva-light/theme.css';
+@import 'primeng/resources/themes/lara-light-blue/theme.css';
 @import "primeicons/primeicons.css";
 @import '/node_modules/primeflex/primeflex.css';
 
@@ -11,6 +11,24 @@ a {
 input[type='checkbox'] {
     width: 0;
     height: 0;
+}
+
+p-button {
+    cursor: pointer;
+}
+
+.bg-red {
+    background-color: $red;
+}
+
+.p-component-overlay {
+    background-color: rgba(255, 255, 255, 0.4);
+    transition-duration: 0.2s;
+    backdrop-filter: blur(2px);
+}
+
+input#legal {
+    opacity: 0;
 }
 
 .legal .p-checkbox {

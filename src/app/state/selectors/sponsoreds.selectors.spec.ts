@@ -1,6 +1,6 @@
 import { selectListSponsoreds } from "./sponsoreds.selectors";
 import { AppState } from "../app.state";
-import { sponsoredsState } from "src/app/models/sponsoreds.model";
+import { sponsoredsState } from "src/app/interfaces/sponsoreds.model";
 
 describe("Selectors", () => {
   const initialState: sponsoredsState = {

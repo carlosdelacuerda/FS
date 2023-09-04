@@ -1,11 +1,11 @@
 import { createAction, props } from '@ngrx/store';
-import { sponsoredsInterface } from 'src/app/models/sponsoreds.model';
+import { SponsoredsInterface } from 'src/app/interfaces/sponsoreds.model';
 
 export const loadSponsoreds = createAction('[Sponsoreds API] Load Sponsoreds');
 
 export const loadedSponsoreds = createAction(
   '[Sponsoreds API] Sponsoreds Load Success',
-  props<{sponsoreds: sponsoredsInterface[]}>()
+  props<{sponsoreds: SponsoredsInterface[]}>()
 );
 
 export const loadedSponsoredsError = createAction(
