@@ -1,9 +1,9 @@
-<p-card header="Advanced Card" subheader="Card Subheader" [style]="{ width: '360px' }">
+<p-card [header]="sponsored.name" [subheader]="sponsored.birth | age" [style]="{ width: '360px' }">
     <ng-template pTemplate="header">
-        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+        <img alt="Main profile picture" [src]="sponsored.imgs[0]" />
     </ng-template>
     <p>
-        Sponsored description
+        {{ sponsored.description }}
     </p>
     <ng-template pTemplate="footer">
         <p-button label="Save" icon="pi pi-check"></p-button>

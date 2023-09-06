@@ -16,7 +16,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { LoginEffects } from './state/effects/login.effects';
 
 export function playerFactory() {
-  return player;
+  return player; 
 }
 
 @NgModule({

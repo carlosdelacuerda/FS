@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ListRoutingModule } from './list-routing.module';
-import { SponsoredComponent } from './components/sponsored/sponsored.component';
+import { SponsoredComponent } from './sponsored-card/sponsored-card.component';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { ListComponent } from './list.component';
 import { ErrorsModule } from '../shareds';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ErrorsModule } from '../shareds';
     ListRoutingModule,
     CardModule,
     ButtonModule,
-    ErrorsModule
+    ErrorsModule,
+    PipesModule
   ]
 })
 export class ListModule { }

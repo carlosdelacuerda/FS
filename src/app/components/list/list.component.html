@@ -1,4 +1,4 @@
 <ng-container *ngIf="!error">
-    <app-sponsored *ngFor="let sponsored of sponsoreds$ | async"></app-sponsored>
+    <app-sponsored-card *ngFor="let sponsored of sponsoreds$ | async" [sponsored]="sponsored"></app-sponsored-card>
 </ng-container>
 <app-page-error *ngIf="error"></app-page-error>
